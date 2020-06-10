@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "872309681288",
+    "firebase_url": "https://tabroom-de0f2.firebaseio.com",
+    "project_id": "tabroom-de0f2",
+    "storage_bucket": "tabroom-de0f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:872309681288:android:22f625260fa17a69f2833d",
+        "android_client_info": {
+          "package_name": "com.tabroom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "872309681288-588pugt3mviqodf2gonbtgctn1vcmqh8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYdkOuZohsGPeGz-KxOPLr2TBVhAQVxaA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "872309681288-588pugt3mviqodf2gonbtgctn1vcmqh8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
