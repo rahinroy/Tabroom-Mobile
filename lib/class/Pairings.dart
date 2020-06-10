@@ -47,18 +47,19 @@ class Pairings {
           for (var f = 0; f < ele.querySelectorAll("*").length; f++){
             tempText += (ele.querySelectorAll("*")[f].text.trim());
           }
+          tempText = tempText.replaceAll("\t", "").replaceAll("\n", "");
+
 //          print(tempText);
           var isContained = false;
-          if (ele.text.trim().length > (tempText.length + 5)){
+          var noSpace = ele.text.trim().replaceAll("\t", "").replaceAll("\n", "");
+          if (noSpace.length > (tempText.length + 3)){
             isContained = true;
           }
           if (isContained){
             indiv.add(ele.text.trim());
-//            y += ele.querySelectorAll("*").length;
           } else {
-//            print("abc");
             if (((ele.getElementsByTagName("*").length == 0)) && ele.text.trim().length > 0){
-              if (indiv.length > 1 && !(indiv[indiv.length - 1].contains(ele.text.trim()))){
+              if (indiv.length > 0 && !(indiv[indiv.length - 1].contains(ele.text.trim()))){
                indiv.add(ele.text.trim());
               } else if (indiv.length == 0){
                 indiv.add(ele.text.trim());
@@ -66,14 +67,15 @@ class Pairings {
             }
           }
         }
+        if (indiv.length == 0 && inner[y].text.trim().length < 3){
+          indiv.add(inner[y].text.trim());
+        }
         row.add(indiv);
       }
       table.add(row);
     }
 
-    print ("ahhhhhhhhhhhhhhhhhhhh");
     var tBody = doc.getElementsByTagName("tbody");
-    print(tBody[0].querySelectorAll("a").length);
 //    for (var x = 0; x < tBody[0].querySelectorAll("a").length; x++) {
 //      var linkEle = tBody[0].querySelectorAll("a")[x];
 //      var linkVal = linkEle.attributes['href'];
@@ -88,23 +90,24 @@ class Pairings {
 
     for (var x = 0; x < tBody[0].querySelectorAll("a").length; x++){
       var linkEle = tBody[0].querySelectorAll("a")[x];
-      var linkVal = linkEle.attributes['href'];
-      var linkText = linkEle.text.trim();
-      linkText = linkText.replaceAll("\n", "");
-      linkText = linkText.replaceAll("\t", " ");
-      if (linkText.length > 0) {
-        if (linkVal.contains("judge")) {
-          linkVal = "https://www.tabroom.com/index/tourn/postings/" + linkVal;
-          href.add(linkVal);
-          hrefText.add(linkText);
-        } else if (linkVal.contains("entry_record")) {
-          linkVal = "https://www.tabroom.com" + linkVal;
-          href.add(linkVal);
-          hrefText.add(linkText);
+      if (linkEle.attributes['href'] != null){
+        var linkVal = linkEle.attributes['href'];
+        var linkText = linkEle.text.trim();
+        linkText = linkText.replaceAll("\n", "");
+        linkText = linkText.replaceAll("\t", " ");
+        if (linkText.length > 0) {
+          if (linkVal.contains("judge")) {
+            linkVal = "https://www.tabroom.com/index/tourn/postings/" + linkVal;
+            href.add(linkVal);
+            hrefText.add(linkText);
+          } else if (linkVal.contains("entry_record")) {
+            linkVal = "https://www.tabroom.com" + linkVal;
+            href.add(linkVal);
+            hrefText.add(linkText);
+          }
         }
       }
     }
-    print ("gbgggggggggggggggg");
 
 //    tBody = doc.getElementsByTagName("tr");
 //    for (var x = 0; x < tBody.length; x++){
@@ -122,7 +125,6 @@ class Pairings {
         }
       }
     }
-    print ("feeeeeeeeeeee");
 
     row = [];
     table.removeAt(0);
@@ -132,7 +134,6 @@ class Pairings {
     }
     //table[0] = row;
     header = row;
-    print ("eoneoooooooooooo");
 
     for (var x = 0; x < row.length; x++){
       if (row[x] == "" || row[x] == "Aff"  || row[x] == "Neg" || row[x] == "Entries" || row[x] == "Entry" || row[x] == "Pro" || row[x] == "Con" || row[x] == "Code"){
@@ -142,7 +143,7 @@ class Pairings {
         row[x] = "Entry";
       }
     }
-    print ("ddddddddddddddddddddd");
+
 
     for (var x = 0; x < table.length; x++){
       var tempList = [];
@@ -159,7 +160,6 @@ class Pairings {
       comp.add(tempList);
     }
     comp.removeAt(0);
-    print ("pppppppppppppppppppppppp");
 
     for (var x = 0; x < header.length; x++){
       if (header[x].contains("Points/Ranks")) {

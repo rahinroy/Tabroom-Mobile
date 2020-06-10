@@ -3,12 +3,12 @@ import 'package:html/parser.dart' as parser;
 import 'package:html/dom.dart' as dom;
 import 'package:flutter/material.dart';
 
-
+import 'class/Pairings.dart';
 import 'widget/HomePage.dart';
 
-////
+
 //void main() async{
-//  Pairings pair = new Pairings("https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=13670&round_id=455315");
+//  Pairings pair = new Pairings("https://www.tabroom.com/index/tourn/results/round_results.mhtml?tourn_id=13670&round_id=455314");
 //  await pair.init();
 ////  print(pair.href);
 //  print (pair.table);
