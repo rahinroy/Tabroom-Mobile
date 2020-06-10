@@ -59,7 +59,7 @@ class Pairings {
             indiv.add(ele.text.trim());
           } else {
             if (((ele.getElementsByTagName("*").length == 0)) && ele.text.trim().length > 0){
-              if (indiv.length > 0 && !(indiv[indiv.length - 1].contains(ele.text.trim()))){
+              if (indiv.length > 0){
                indiv.add(ele.text.trim());
               } else if (indiv.length == 0){
                 indiv.add(ele.text.trim());
