@@ -45,10 +45,12 @@ class Tourney {
       if (!(tab[x].contains("Pairings") || tab[x].contains("Results") || tab[x].contains("Invite") || tab[x].contains("Entries") || tab[x].contains("Judges"))) {
         tab.removeAt(x);
         tabLinks.removeAt(x);
+        x = x - 1;
       }
       if (tab[x].contains(" ")){
         tab.removeAt(x);
         tabLinks.removeAt(x);
+        x = x - 1;
       }
     }
     print (tab);

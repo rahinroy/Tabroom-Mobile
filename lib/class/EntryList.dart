@@ -56,7 +56,7 @@ class EntryList {
     //table[0] = row;
     header = row;
     for (var x = 0; x < row.length; x++){
-      if (row[x] == "Code"){
+      if (row[x] == "Code" || row[x] == "Entry"){
         entriesPos.add(x);
       }
       if (row[x] == ""){

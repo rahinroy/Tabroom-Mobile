@@ -36,6 +36,7 @@ class JudgePageState extends State<JudgePage> {
               child: ListView.separated(
                 itemCount: judges.eventNames.length,
                 itemBuilder: (context, index) {
+                  print (judges.eventNames);
                   return ListTile(
                     title: Text(judges.eventNames[index]),
                     onTap: () {

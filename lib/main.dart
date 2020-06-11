@@ -3,15 +3,16 @@ import 'package:html/parser.dart' as parser;
 import 'package:html/dom.dart' as dom;
 import 'package:flutter/material.dart';
 
-import 'class/Pairings.dart';
+import 'class/Paradigm.dart';
 import 'widget/HomePage.dart';
-
-
+import 'class/Judges.dart';
+//
 //void main() async{
-//  Pairings pair = new Pairings("https://www.tabroom.com/index/tourn/results/round_results.mhtml?tourn_id=13670&round_id=455314");
+//  Paradigm pair = new Paradigm("https://www.tabroom.com/index/paradigm.mhtml?judge_person_id=96941");
 //  await pair.init();
 ////  print(pair.href);
-//  print (pair.table);
+//  print (pair.format[0]);
+//  print (pair.paraList[0]);
 //}
 void main() {
   runApp(new App());

@@ -56,17 +56,6 @@ class JudgeEvent {
         }
       }
     }
-    for (var x = 0; x < table.length; x++){
-      for (var y = 0; y < table[x].length; y++){
-        for (var z = 0; z < table[x][y].length; z++){
-          table[x][y][z] = table[x][y][z].replaceAll("\t", " ");
-          table[x][y][z] = table[x][y][z].replaceAll("\n", "");
-          while (table[x][y][z].contains("  ")){
-            table[x][y][z] = table[x][y][z].replaceAll("  ", " ");
-          }
-        }
-      }
-    }
     row = [];
     table.removeAt(0);
 //    print (table);

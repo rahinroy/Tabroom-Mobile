@@ -19,7 +19,10 @@ class Judges{
     var roundLinksList = dom.getElementsByClassName("blue half centeralign");
     for (var x = 0; x < roundNamesElements.length; x++){
       eventNames.add(roundNamesElements[x].text.trim());
-      if (roundLinksList[x].text.trim() == "Judge List"){
+      print(roundLinksList[x].text.trim());
+    }
+    for (var x = 0; x < roundLinksList.length; x++){
+        if (roundLinksList[x].text.trim() == "Judge List"){
         eventLinks.add("https://www.tabroom.com" + roundLinksList[x].attributes['href']);
       }
     }

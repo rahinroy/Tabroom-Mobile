@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import '../class/JudgeEvent.dart';
 import '../class/Paradigm.dart';
-
+import 'ParaJudgeInfo.dart';
 
 
 class JudgeInfoPage extends StatefulWidget {
@@ -16,6 +16,17 @@ class JudgeInfoPage extends StatefulWidget {
 }
 class JudgeInfoPageState extends State<JudgeInfoPage> {
 
+
+  switchToPara(len, index, paraStr, paraLink, name) {
+    if (index == (len - 1)){
+      if (paraStr != ""){
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ParaJudgeInfo(link: "http://tabroom.com" + paraLink, name: name)),
+        );
+      }
+    }
+  }
   @override
   // ignore: camel_case_types
   Widget build(BuildContext context) {
@@ -35,7 +46,11 @@ class JudgeInfoPageState extends State<JudgeInfoPage> {
         future: para.init(),
         builder: (context, snapshot){
           if(snapshot.connectionState == ConnectionState.done){
-            info.add(para.para);
+            if (para.para == ""){
+              info.add("No Paradigm Available");
+            } else {
+              info.add("Click Here For Paradigm");
+            }
             for (var x = 0; x < info.length; x++){
               if(info[x] == ""){
                 info[x] = "n/a";
@@ -45,9 +60,10 @@ class JudgeInfoPageState extends State<JudgeInfoPage> {
               child: ListView.separated(
                 itemCount: info.length,
                 itemBuilder: (context, index) {
-                  return ListTile(
+                  return Container(child: ListTile(
                     title: Text(headers[index].toString() + ":\n" + info[index].toString()),
-                  );
+                    onTap: () => switchToPara(info.length, index, para.para, widget.judgeEvent.linkList[widget.ind], (info[0] + " " + info[1]).toString()),
+                  ));
                 },
                 separatorBuilder: (context, index) {
                   return Divider();
