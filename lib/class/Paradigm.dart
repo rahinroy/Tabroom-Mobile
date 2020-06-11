@@ -14,7 +14,10 @@ class Paradigm {
   Future init() async {
 
     String formatType(outerTag) {
-      var tag = outerTag.substring(0,7);
+      var tag = outerTag;
+      if (outerTag.length > 7) {
+        tag = outerTag.substring(0, 7);
+      }
       if (tag.contains("em")){
         return ("i");
       } else if (tag.contains("strong")){
@@ -35,26 +38,26 @@ class Paradigm {
       var temp;
       for (var x = 0; x < pg.length; x++){
         temp = "";
-        if (pg[x].querySelectorAll("*").length == 0){
+        if (pg[x].querySelectorAll("strong, span, em").length == 0){
           temp = removeTab(pg[x].text.trim());
           paraList.add([temp]);
           format.add(["n"]);
         } else {
-          var tempEleList = pg[x].querySelectorAll("*");
-          var tempList = pg[x].text.trim().split(pg[x].querySelectorAll("*")[0].text);
+          var tempEleList = pg[x].querySelectorAll("strong, span, em");
+          var tempList = pg[x].text.trim().split(pg[x].querySelectorAll("strong, span, em")[0].text);
           var tempFormat = [];
-          tempList.insert(1, pg[x].querySelectorAll("*")[0].text.trim());
-          tempFormat.addAll(["n", formatType(pg[x].querySelectorAll("*")[0].outerHtml), "n"]);
+          tempList.insert(1, pg[x].querySelectorAll("strong, span, em")[0].text.trim());
+          tempFormat.addAll(["n", formatType(pg[x].querySelectorAll("strong, span, em")[0].outerHtml), "n"]);
           for (var y = 1; y < tempEleList.length; y++){
             var innerTempList = [];
-            innerTempList = tempList[tempList.length - 1].split(pg[x].querySelectorAll("*")[0].text);
+            innerTempList = tempList[tempList.length - 1].split(pg[x].querySelectorAll("strong, span, em")[0].text);
             tempList[tempList.length - 1] = innerTempList[0];
-            tempList.add(pg[x].querySelectorAll("*")[0].text);
+            tempList.add(pg[x].querySelectorAll("strong, span, em")[0].text);
             tempList.add(innerTempList[0]);
-            tempFormat.addAll(["n", formatType(pg[x].querySelectorAll("*")[0].outerHtml), "n"]);
+            tempFormat.addAll(["n", formatType(pg[x].querySelectorAll("strong, span, em")[0].outerHtml), "n"]);
           }
           for (var z = 0; z < tempList.length; z++){
-            tempList[z] = removeTab(tempList[z]).trim();
+            tempList[z] = tempList[z].trim().replaceAll("\t", "").replaceAll("\n", "");
           }
           paraList.add(tempList);
           format.add(tempFormat);
@@ -67,6 +70,11 @@ class Paradigm {
           paraList[x][y] += "\n\n";
         }
       }
+    }
+    print (paraList);
+    if (paraList.isEmpty){
+      paraList.add(["No Paradigm Listed"]);
+      format.add(["n"]);
     }
   }
 }

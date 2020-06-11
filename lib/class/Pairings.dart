@@ -16,6 +16,8 @@ class Pairings {
   var start;
   var href = [];
   var hrefText = [];
+  var judgeHref = [];
+  var judgeHrefText = [];
 
   Pairings (tLink) {
     link = tLink;
@@ -76,17 +78,6 @@ class Pairings {
     }
 
     var tBody = doc.getElementsByTagName("tbody");
-//    for (var x = 0; x < tBody[0].querySelectorAll("a").length; x++) {
-//      var linkEle = tBody[0].querySelectorAll("a")[x];
-//      var linkVal = linkEle.attributes['href'];
-//      var linkText = linkEle.text.trim();
-////      linkText = removeTab(linkText);
-////      if (linkText.length > 0 && linkVal.contains("entry_record")){
-////        linkVal = "https://www.tabroom.com" + linkVal;
-////        href.add(linkVal);
-////        hrefText.add(linkText);
-////      }
-//    }
 
     for (var x = 0; x < tBody[0].querySelectorAll("a").length; x++){
       var linkEle = tBody[0].querySelectorAll("a")[x];
@@ -97,9 +88,9 @@ class Pairings {
         linkText = linkText.replaceAll("\t", " ");
         if (linkText.length > 0) {
           if (linkVal.contains("judge")) {
-            linkVal = "https://www.tabroom.com/index/tourn/postings/" + linkVal;
-            href.add(linkVal);
-            hrefText.add(linkText);
+//            linkVal = "https://www.tabroom.com/index/tourn/postings/" + linkVal;
+//            judgeHref.add(linkVal);
+//            judgeHrefText.add(linkText);
           } else if (linkVal.contains("entry_record")) {
             linkVal = "https://www.tabroom.com" + linkVal;
             href.add(linkVal);
@@ -109,12 +100,35 @@ class Pairings {
       }
     }
 
-//    tBody = doc.getElementsByTagName("tr");
-//    for (var x = 0; x < tBody.length; x++){
-//
-//    }
+    tBody = doc.getElementsByTagName("tbody")[0];
+    var rows = tBody.getElementsByTagName("tr");
 
-    for (var x = 0; x < table.length; x++){
+    for (var x = 0; x < rows.length; x++){
+      var tempText = [];
+      var tempLink = [];
+      for (var y = 0; y < rows[x].querySelectorAll("a").length; y++){
+        var linkEle = rows[x].querySelectorAll("a")[y];
+        if (linkEle.attributes['href'] != null){
+          var linkVal = linkEle.attributes['href'];
+          var linkText = linkEle.text.trim();
+          linkText = linkText.replaceAll("\n", "");
+          linkText = linkText.replaceAll("\t", " ");
+          if (linkText.length > 0) {
+            if (linkVal.contains("judge")) {
+              linkVal = "https://www.tabroom.com/index/tourn/postings/" + linkVal;
+              tempLink.add(linkVal);
+              tempText.add(linkText);
+            }
+          }
+        }
+      }
+      judgeHref.add(tempLink);
+      judgeHrefText.add(tempText);
+    }
+
+
+
+      for (var x = 0; x < table.length; x++){
       for (var y = 0; y < table[x].length; y++){
         for (var z = 0; z < table[x][y].length; z++){
           table[x][y][z] = table[x][y][z].replaceAll("\t", " ");

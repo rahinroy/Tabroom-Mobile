@@ -18,7 +18,6 @@ class tPage extends StatefulWidget {
 class tPageState extends State<tPage> {
 
   StatefulWidget split(tourney, index, rn){
-    print (widget.ret);
     if (widget.ret == "Results" || widget.ret == "Pairings"){
       return ePage(tId: tourney.tournID, eId: tourney.eventID[index], ret: widget.ret, roundName: rn);
     }

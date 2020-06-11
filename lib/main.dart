@@ -3,16 +3,16 @@ import 'package:html/parser.dart' as parser;
 import 'package:html/dom.dart' as dom;
 import 'package:flutter/material.dart';
 
-import 'class/Paradigm.dart';
+import 'class/Pairings.dart';
 import 'widget/HomePage.dart';
-import 'class/Judges.dart';
-//
+import 'class/Paradigm.dart';
+
 //void main() async{
-//  Paradigm pair = new Paradigm("https://www.tabroom.com/index/paradigm.mhtml?judge_person_id=96941");
+//  Paradigm pair = new Paradigm("https://www.tabroom.com/index/paradigm.mhtml?judge_person_id=65437");
 //  await pair.init();
 ////  print(pair.href);
-//  print (pair.format[0]);
-//  print (pair.paraList[0]);
+//  print (pair.format);
+//
 //}
 void main() {
   runApp(new App());

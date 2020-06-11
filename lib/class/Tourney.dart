@@ -53,7 +53,6 @@ class Tourney {
         x = x - 1;
       }
     }
-    print (tab);
   }
 }
 
