@@ -67,7 +67,10 @@ class JudgeEventPageState extends State<JudgeEventPage> {
                           ),
                           contentPadding: EdgeInsets.symmetric(vertical: 15.0),
                           suffixIcon: IconButton(
-                            onPressed: () {_controller1.clear(); setState((){_controller1.text = "";filteredUsers = judgeEvent.comp;}); },
+                            onPressed: () {_controller1.clear(); setState((){
+                              _controller1.text = "";
+                              filteredUsers = judgeEvent.comp;
+                            });},
                             icon: Icon(Icons.clear, color: Color(0xff616161)),
                           ),
                           //border: InputBorder.bottom;
@@ -85,7 +88,17 @@ class JudgeEventPageState extends State<JudgeEventPage> {
                                   .toLowerCase()
                                   .contains(string.toLowerCase())))
                                   .toList();
-                              _controller1.text = string;
+                              if (filteredUsers.length == 0){
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)), title: new Text("No Results Found"));
+                                    },
+                                );
+                                _controller1.text = "";
+                              } else {
+                                _controller1.text = string;
+                              }
                             });
 //                        });
                           }

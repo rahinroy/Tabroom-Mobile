@@ -85,8 +85,17 @@ class elPageState extends State<elPage> {
                                   .toLowerCase()
                                   .contains(string.toLowerCase())))
                                   .toList();
-                              _controller1.text = string;
-
+                              if (filteredUsers.length == 0){
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)), title: new Text("No Results Found"));
+                                  },
+                                );
+                                _controller1.text = "";
+                              } else {
+                                _controller1.text = string;
+                              }
                             });
 //                        });
                           }
@@ -99,7 +108,7 @@ class elPageState extends State<elPage> {
                     itemCount: lenTest(),
                     itemBuilder: (context, index) {
                       return ListTile(
-                        title: Text(listTest()[index].join(" vs ")),
+                        title: Text(listTest()[index].join(" - ")),
                         onTap: () {
                           int p = index;
                           if (listTest() == filteredUsers){

@@ -31,6 +31,8 @@ class Paradigm {
 
     if (link == ""){
       para = "";
+      paraList.add(["No Paradigm Listed"]);
+      format.add(["n"]);
     } else {
       para = "feifwinfe";
       var dom = await construct(link);

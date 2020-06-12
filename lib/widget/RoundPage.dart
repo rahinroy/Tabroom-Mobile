@@ -65,7 +65,7 @@ class rPageState extends State<rPage> {
                           if (pair.judgeHrefText[widget.ind].length == 1){
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => ParaJudgeInfo(link: pair.judgeHrefText[widget.ind][0], name: pair.judgeHrefText[widget.ind][0])),
+                              MaterialPageRoute(builder: (context) => ParaJudgeInfo(link: pair.judgeHref[widget.ind][0], name: pair.judgeHrefText[widget.ind][0])),
                             );
                           } else if (pair.judgeHrefText[widget.ind].length > 1) {
                             showDialog(

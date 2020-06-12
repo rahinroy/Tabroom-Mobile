@@ -27,7 +27,7 @@ class Event {
     var temp = docs.getElementsByTagName("a");
     docs = await construct("http://www.tabroom.com" + temp[0].attributes["href"]);
     temp = docs.getElementsByClassName("dkblue full nowrap");
-    temp += docs.getElementsByClassName("blue full nowrap");
+    temp.addAll(docs.getElementsByClassName("blue full nowrap"));
     for (var x = 0; x < temp.length; x++){
       roundNames.add(temp[x].text.trim());
       roundLinks.add("http://www.tabroom.com" + temp[x].attributes["href"]);
