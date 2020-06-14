@@ -8,11 +8,11 @@ import 'widget/HomePage.dart';
 import 'class/Paradigm.dart';
 
 //void main() async{
-//  Paradigm pair = new Paradigm("https://www.tabroom.com/index/paradigm.mhtml?judge_person_id=65437");
+//  Paradigm pair = new Paradigm("https://www.tabroom.com/index/paradigm.mhtml?search_first=lin&search_last=yi");
 //  await pair.init();
 ////  print(pair.href);
+//  print (pair.paraList);
 //  print (pair.format);
-//
 //}
 void main() {
   runApp(new App());

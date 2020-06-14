@@ -39,41 +39,55 @@ class Paradigm {
       var pg = dom.querySelectorAll("p");
       var temp;
       for (var x = 0; x < pg.length; x++){
+//        print(x);
+//        print (pg[x].text);
         temp = "";
         if (pg[x].querySelectorAll("strong, span, em").length == 0){
-          temp = removeTab(pg[x].text.trim());
+
+          temp = pg[x].text.trim().replaceAll("\t", "").replaceAll("\n", "");
           paraList.add([temp]);
           format.add(["n"]);
+//          print (x);
+//          print(temp);
         } else {
+//          print (x);
           var tempEleList = pg[x].querySelectorAll("strong, span, em");
           var tempList = pg[x].text.trim().split(pg[x].querySelectorAll("strong, span, em")[0].text);
+          tempList = [tempList[0], pg[x].querySelectorAll("strong, span, em")[0].text, tempList.sublist(1).join(pg[x].querySelectorAll("strong, span, em")[0].text)];
           var tempFormat = [];
-          tempList.insert(1, pg[x].querySelectorAll("strong, span, em")[0].text.trim());
+//          tempList.insert(1, pg[x].querySelectorAll("strong, span, em")[0].text.trim());
           tempFormat.addAll(["n", formatType(pg[x].querySelectorAll("strong, span, em")[0].outerHtml), "n"]);
-          for (var y = 1; y < tempEleList.length; y++){
+          for (var y = 2; y < tempEleList.length; y++){
+//            print (y);
             var innerTempList = [];
             innerTempList = tempList[tempList.length - 1].split(pg[x].querySelectorAll("strong, span, em")[0].text);
+            innerTempList = [innerTempList[0], pg[x].querySelectorAll("strong, span, em")[0].text, innerTempList.sublist(1).join(pg[x].querySelectorAll("strong, span, em")[0].text)];
             tempList[tempList.length - 1] = innerTempList[0];
             tempList.add(pg[x].querySelectorAll("strong, span, em")[0].text);
             tempList.add(innerTempList[0]);
             tempFormat.addAll(["n", formatType(pg[x].querySelectorAll("strong, span, em")[0].outerHtml), "n"]);
           }
           for (var z = 0; z < tempList.length; z++){
-            tempList[z] = tempList[z].trim().replaceAll("\t", "").replaceAll("\n", "");
+            tempList[z] = tempList[z].replaceAll("\t", "").replaceAll("\n", "");
           }
           paraList.add(tempList);
           format.add(tempFormat);
+//          print (pg[x].text);
         }
       }
     }
+    print ("Gega");
     for (var x = 0; x < paraList.length; x++){
+      print (paraList[x].length);
       for (var y = 0; y < paraList[x].length; y++){
+        print (y);
         if (y == paraList[x].length - 1){
           paraList[x][y] += "\n\n";
         }
       }
     }
-    print (paraList);
+//    print (paraList);
+    print ("dont");
     if (paraList.isEmpty){
       paraList.add(["No Paradigm Listed"]);
       format.add(["n"]);

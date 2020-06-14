@@ -51,6 +51,7 @@ class ParaJudgeInfoState extends State<ParaJudgeInfo> {
   List<TextSpan> paraText(word, format){
     var fin = new List<TextSpan>();
     for (var x = 0; x < word.length; x++){
+        print (x);
         fin.addAll(temp(format[x], word[x]));
     }
     return fin;
