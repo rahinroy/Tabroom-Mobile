@@ -7,16 +7,16 @@ import 'class/Pairings.dart';
 import 'widget/HomePage.dart';
 import 'class/Paradigm.dart';
 
-//void main() async{
-//  Paradigm pair = new Paradigm("https://www.tabroom.com/index/paradigm.mhtml?search_first=lin&search_last=yi");
-//  await pair.init();
-////  print(pair.href);
-//  print (pair.paraList);
+void main() async{
+  Pairings pair = new Pairings("https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=15780&round_id=556252");
+  await pair.init();
+//  print(pair.href);
+  print (pair.table);
 //  print (pair.format);
-//}
-void main() {
-  runApp(new App());
 }
+//void main() {
+//  runApp(new App());
+//}
 
 class App extends StatelessWidget {
   @override

@@ -44,17 +44,17 @@ class Pairings {
         indiv = [];
         var inner = rowEle[x].querySelectorAll("td");
         for (var z = 0; z < inner[y].querySelectorAll("a,span,div,td").length; z++){
+
           var ele = inner[y].querySelectorAll("a,span,div,td")[z];
           var tempText = "";
           for (var f = 0; f < ele.querySelectorAll("*").length; f++){
             tempText += (ele.querySelectorAll("*")[f].text.trim());
           }
           tempText = tempText.replaceAll("\t", "").replaceAll("\n", "");
-
 //          print(tempText);
           var isContained = false;
           var noSpace = ele.text.trim().replaceAll("\t", "").replaceAll("\n", "");
-          if (noSpace.length > (tempText.length + 3)){
+          if (noSpace.length > (tempText.length + 2)){
             isContained = true;
           }
           if (isContained){
@@ -69,8 +69,10 @@ class Pairings {
             }
           }
         }
-        if (indiv.length == 0 && inner[y].text.trim().length < 3){
+//        if (y==3){print(inner[y].text.trim());}
+        if (indiv.length == 0 && inner[y].text.trim().length > 0){
           indiv.add(inner[y].text.trim());
+//          print(inner[y].text.trim());
         }
         row.add(indiv);
       }
