@@ -6,12 +6,14 @@ import 'package:flutter/material.dart';
 import 'class/Pairings.dart';
 import 'widget/HomePage.dart';
 import 'class/Paradigm.dart';
-//
+import 'class/Record.dart';
+
+////
 //void main() async{
-//  Pairings pair = new Pairings("https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=15780&round_id=556252");
+//  Record pair = new Record("https://www.tabroom.com/index/tourn/postings/entry_record.mhtml?tourn_id=15619&entry_id=2845505");
 //  await pair.init();
 ////  print(pair.href);
-//  print (pair.table);
+//  print (pair.oppLink);
 ////  print (pair.format);
 //}
 void main() {

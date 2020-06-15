@@ -33,10 +33,12 @@ class entryRecordState extends State<entryRecord> {
                     title: Text(record.roundNames[index]),
                     subtitle: Text(record.table[index].join("\n")),
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => entryRecord(link: record.oppLink[index], name: record.opp[index])),
-                      );//style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 2.0),
+                      if (record.oppLink[index] != ""){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => entryRecord(link: record.oppLink[index], name: record.opp[index])),
+                        );
+                      }//style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 2.0),
                     },
                   );
                 },

@@ -52,6 +52,13 @@ class JudgeEventPageState extends State<JudgeEventPage> {
                 return judgeEvent.comp;
               }
             }
+            String nameOrder(index){
+              if (listTest()[index].length == 2){
+                return listTest()[index][1] + ", " + listTest()[index][0];
+              } else {
+                return listTest()[index].join(" ");
+              }
+            }
 //            final _debouncer = new Debouncer(milliseconds: 400);
             return Column(
               children: <Widget>[
@@ -112,7 +119,7 @@ class JudgeEventPageState extends State<JudgeEventPage> {
                     //itemCount: judgeEvent.comp.length,
                     itemBuilder: (context, index) {
                       return ListTile(
-                          title: Text(listTest()[index].join(", ")),
+                          title: Text(nameOrder(index)),
                           //title: Text(judgeEvent.comp[index].join(", ")),
                         onTap: () {
                           int p = index;

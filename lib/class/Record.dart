@@ -1,4 +1,5 @@
 
+
 import '../main.dart';
 
 class Record{
@@ -23,6 +24,7 @@ class Record{
         var tempEle = rows[x].querySelectorAll("span,a")[y];
         if (tempEle.querySelectorAll("*").length == 0){
           tempText.add(tempEle.text.trim().replaceAll("\t", "").replaceAll("\n", ""));
+//          print(rows[x].getElementsByClassName("threetenths padno")[y].text);
           if (tempEle.text.trim().contains("vs")){
             oppLink.add("https://www.tabroom.com/index/tourn/postings/" + tempEle.attributes['href']);
             var tempName = tempEle.text.trim().replaceAll("\t", "").replaceAll("\n", "");
@@ -30,6 +32,11 @@ class Record{
             opp.add(tempName);
           }
         }
+      }
+      print (tempText);
+      if (tempText[1] == "Bye"){
+        opp.add("BYE");
+        oppLink.add("");
       }
       for (var z = 1; z < tempText.length; z++){
         if (tempText[z].length < 3 || (tempText[z].length == 4 && tempText[z].contains("."))){

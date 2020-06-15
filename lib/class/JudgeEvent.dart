@@ -69,9 +69,9 @@ class JudgeEvent {
       if (row[x] == "First" || row[x] == "Last"){
         entriesPos.add(x);
       }
-      if (row[x] == ""){
-        row[x] = "Entry";
-      }
+//      if (row[x] == ""){
+//        row[x] = "Entry";
+//      }
     }
     for (var x = 0; x < table.length; x++){
       var tempList = [];

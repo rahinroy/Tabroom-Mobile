@@ -18,7 +18,7 @@ class ParaLookup{
     if (dom.getElementsByClassName("paradigm").length > 0){
       isList = true;
       names.add(dom.getElementsByClassName("twothirds")[0].text.replaceAll("Paradigm", "").trim());
-      loc.add("Location Unavailable");
+      loc.add("Click To View Paradigm");
       links.add(link);
     } else {
       for (var x = 0; x < tempList.length; x++){
