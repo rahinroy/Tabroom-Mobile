@@ -7,13 +7,14 @@ import 'class/Pairings.dart';
 import 'widget/HomePage.dart';
 import 'class/Paradigm.dart';
 import 'class/Record.dart';
+import 'class/Index.dart';
 
-////
+
 //void main() async{
-//  Record pair = new Record("https://www.tabroom.com/index/tourn/postings/entry_record.mhtml?tourn_id=15619&entry_id=2845505");
+//  Pairings pair = new Pairings("https://www.tabroom.com/index/tourn/postings/round.mhtml?tourn_id=15780&round_id=556318");
 //  await pair.init();
 ////  print(pair.href);
-//  print (pair.oppLink);
+//  print (pair.table);
 ////  print (pair.format);
 //}
 void main() {

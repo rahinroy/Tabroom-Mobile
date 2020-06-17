@@ -4,7 +4,7 @@ import '../class/Pairings.dart';
 import 'RoundPage.dart';
 import 'package:flutter/foundation.dart';
 import 'dart:async';
-
+import 'dart:math';
 
 class pPage extends StatefulWidget {
   final String link;
@@ -15,7 +15,6 @@ class pPage extends StatefulWidget {
 }
 
 var _controller1 = TextEditingController();
-
 class pPageState extends State<pPage> {
 
   List filteredUsers = List();
@@ -23,6 +22,7 @@ class pPageState extends State<pPage> {
   SearchBar searchBar;
   @override
   Widget build(BuildContext context) {
+//    _controller1.text = "";
     Pairings pair = new Pairings(widget.link);
     return new Scaffold(
       appBar: new AppBar(
@@ -94,7 +94,6 @@ class pPageState extends State<pPage> {
                             } else {
                               _controller1.text = string;
                             }
-
                           });
 //                        });
                       }
@@ -114,13 +113,25 @@ class pPageState extends State<pPage> {
                         title: Text(listTest()[index].join("\nvs\n")),
                         onTap: () {
                           int p = index;
-                          if (listTest() == filteredUsers){
-                            for (var x = 0; x < pair.comp.length; x++) {
-                              if (pair.table[x].join().contains(filteredUsers[index].join())){
+                          if (filteredUsers.isEmpty){
+                            filteredUsers = pair.comp;
+                          }
+//                          if (listTest() == filteredUsers){
+                          print (filteredUsers[index]);
+                          print (pair.comp.length);
+
+                          for (var x = 0; x < pair.comp.length; x++) {
+                              var isSame = true;
+                              for (var y = 0; y < min(pair.comp[x].length, filteredUsers[index].length); y++){
+                                if (pair.comp[x][y] != filteredUsers[index][y]){
+                                  isSame = false;
+                                }
+                              }
+                              if (isSame){
                                 p = x;
                               }
-                            }
                           }
+//
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => rPage(pair: pair, ind: p)),
@@ -143,7 +154,6 @@ class pPageState extends State<pPage> {
             );
           }
           else if(snapshot.hasError){
-            print ("efe");
             throw snapshot.error;
           }
           else{

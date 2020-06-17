@@ -46,7 +46,7 @@ class rPageState extends State<rPage> {
                               );
                               print (pair.judgeHref[widget.ind][i]);
                             },
-                            child: new Text( "• "+ pair.judgeHrefText[widget.ind][i] + "\n", style: TextStyle(fontSize: 20)),//item value
+                            child: new Text( "• "+ pair.judgeHrefText[widget.ind][i].replaceAll("                  ", " ") + "\n", style: TextStyle(fontSize: 20)),//item value
                           ));
                         return options;
                       }

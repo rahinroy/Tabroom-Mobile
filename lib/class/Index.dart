@@ -9,7 +9,7 @@ class Home {
   Home ();
   Future init() async {
     var doc = await construct("https://www.tabroom.com/index/index.mhtml");
-    var element = doc.getElementsByClassName("white smallish nearfull padvertless");
+    var element = doc.getElementsByClassName("white smallish nearfull");
     var dateList = doc.getElementsByClassName("centeralign smallish nowrap");
 
     var temp;

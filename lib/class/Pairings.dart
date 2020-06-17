@@ -43,38 +43,50 @@ class Pairings {
       for (var y = 0; y < rowEle[x].querySelectorAll("td").length; y++){
         indiv = [];
         var inner = rowEle[x].querySelectorAll("td");
-        for (var z = 0; z < inner[y].querySelectorAll("a,span,div,td").length; z++){
+        var isContained = false;
+        var noSpace = inner[y].text.trim().replaceAll("\t", "").replaceAll("\n", "");
+        var tempText = "";
+        for (var f = 0; f < inner[y].querySelectorAll("*").length; f++){
+          tempText += (inner[y].querySelectorAll("*")[f].text.trim());
+        }
+        tempText = tempText.replaceAll("\t", "").replaceAll("\n", "");
+        if (noSpace.length > (tempText.length + 2)){
+          if (tempText != ""){
+            isContained = true;
+            print (noSpace);
+          }
+        } else {
+          for (var z = 0; z < inner[y].querySelectorAll("a,span,div,td").length; z++){
 
-          var ele = inner[y].querySelectorAll("a,span,div,td")[z];
-          var tempText = "";
-          for (var f = 0; f < ele.querySelectorAll("*").length; f++){
-            tempText += (ele.querySelectorAll("*")[f].text.trim());
-          }
-          tempText = tempText.replaceAll("\t", "").replaceAll("\n", "");
-//          print(tempText);
-          var isContained = false;
-          var noSpace = ele.text.trim().replaceAll("\t", "").replaceAll("\n", "");
-          if (noSpace.length > (tempText.length + 2)){
-            if (tempText != ""){
-              isContained = true;
-            //            print (noSpace);
-              print (noSpace);
+            var ele = inner[y].querySelectorAll("a,span,div,td")[z];
+            tempText = "";
+            for (var f = 0; f < ele.querySelectorAll("*").length; f++){
+              tempText += (ele.querySelectorAll("*")[f].text.trim());
             }
-          }
-          if (isContained){
-//            print (ele.text.trim() + "\n\n\n\n");
-            indiv.add(ele.text.trim());
-          } else {
-            if (((ele.getElementsByTagName("*").length == 0)) && ele.text.trim().length > 0){
-              if (indiv.length > 0 && !(indiv[indiv.length-1].contains(ele.text.trim()))){
-               indiv.add(ele.text.trim());
-              } else if (indiv.length == 0){
-                indiv.add(ele.text.trim());
+            tempText = tempText.replaceAll("\t", "").replaceAll("\n", "");
+  //          print(tempText);
+            noSpace = ele.text.trim().replaceAll("\t", "").replaceAll("\n", "");
+  //          print (noSpace);
+            isContained = false;
+            if (noSpace.length > (tempText.length + 2)){
+              if (tempText != ""){
+                isContained = true;
+                print (noSpace);
+              }
+            }
+            if (isContained){
+              indiv.add(ele.text.trim().replaceAll("\t", " ").replaceAll("\n", ""));
+            } else {
+              if (((ele.getElementsByTagName("*").length == 0)) && ele.text.trim().length > 0){
+                if (indiv.length > 0 && !(indiv[indiv.length-1].contains(ele.text.trim()))){
+                 indiv.add(ele.text.trim());
+                } else if (indiv.length == 0){
+                  indiv.add(ele.text.trim());
+                }
               }
             }
           }
         }
-//        if (y==3){print(inner[y].text.trim());}
         if (indiv.length == 0 && inner[y].text.trim().length > 0){
           indiv.add(inner[y].text.trim());
 //          print(inner[y].text.trim());
